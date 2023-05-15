@@ -49,10 +49,10 @@ jobs:
           cache: npm
 
       - name: Install dependencies
-        run: npm ci
+        run: cd main-repo && npm ci
 
       - name: Build website
-        run: npm run build
+        run: cd main-repo && npm run build
 
       # Docs: https://github.com/peaceiris/actions-gh-pages#%EF%B8%8F-docusaurus
       - name: Deploy to GitHub Pages

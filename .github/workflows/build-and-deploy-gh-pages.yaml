@@ -31,7 +31,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      
+        with:
+          path: main-repo
+      - name: check out kit repo
+        uses: actions/checkout@v3
+        with: 
+          repository: "LuisRickert/filter-branch-source"
+          path: kit-repo
+      - name: copy docs
+        run: |
+          mkdir -p main-repo/docs/test-kit &&
+          cp -r kit-repo/documentation/ main-repo/docs/test-kit
+        
       - uses: actions/setup-node@v3
         with:
           node-version: 16
